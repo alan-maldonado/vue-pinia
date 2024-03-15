@@ -1,5 +1,7 @@
 import { ref, reactive } from 'vue';
 export function piniaHistoryPlugin({ pinia, app, store, options }) {
+  if (!options.historyEnabled) return;
+
   const history = reactive([]);
   const future = reactive([]);
   const doingHistory = ref(false);
@@ -13,6 +15,8 @@ export function piniaHistoryPlugin({ pinia, app, store, options }) {
   });
 
   return {
+    history,
+    future,
     undo: () => {
       if (history.length === 1) return;
       doingHistory.value = true;
