@@ -4,7 +4,9 @@ import ProductCard from "@/components/ProductCard.vue";
 import { useProductStore } from '@/stores/ProductStore';
 import { storeToRefs } from "pinia";
 
-const { products } = storeToRefs(useProductStore());
+const productStore = useProductStore();
+productStore.fill();
+const { products } = storeToRefs(productStore);
 
 </script>
 
