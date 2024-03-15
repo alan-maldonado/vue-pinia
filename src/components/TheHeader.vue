@@ -9,7 +9,9 @@ export default {
     ...mapState(useAuthUserStore, ['username'])
   },
   methods: {
-    ...mapActions(useAuthUserStore, ['visitTwitterProfile'])
+    ...mapActions(useAuthUserStore, {
+      toTwitter: 'visitTwitterProfile'
+    })
   }
 }
 </script>
@@ -19,7 +21,7 @@ export default {
     style="background-image: url('/images/double-bubble-outline.png')">
     <h1 class="text-4xl text-gray-700 font-bold">The Pineapple Stand</h1>
     <div class="mr-5">
-      <span @click="visitTwitterProfile">{{ username }}</span>
+      <span @click="toTwitter">{{ username }}</span>
       <CartWidget class="inline-block" />
     </div>
   </header>
